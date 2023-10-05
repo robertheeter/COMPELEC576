@@ -51,7 +51,7 @@ def plot_decision_boundary(pred_func, X, y, act_fun_type, nn_layer_dims):
     # plot the contour and training examples
     plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral)
     plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Spectral)
-    plt.title(f'Make Moons: act_fun_type = [{act_fun_type}], nn_layer_dims = {nn_layer_dims}')
+    plt.title(f'Make Blobs: act_fun_type = [{act_fun_type}], nn_layer_dims = {nn_layer_dims}')
     plt.show()
 
 class NeuralNetwork(object):

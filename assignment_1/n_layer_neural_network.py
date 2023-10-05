@@ -21,7 +21,7 @@ def generate_data_make_blobs():
     '''
 
     np.random.seed(0)
-    X, y = datasets.make_blobs(n_samples=300, n_features=2, centers=5)
+    X, y = datasets.make_blobs(n_samples=300, n_features=2, centers=4)
 
     return X, y
 
@@ -172,29 +172,29 @@ class DeepNeuralNetwork(NeuralNetwork):
 
 def main():
     # # generate and visualize Make Moons or Make Blobs datasets
-    X, y = generate_data_make_moons()
-    # X, y = generate_data_make_blobs()
-    plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)
-    plt.title("'Make Moons' dataset")
+    # X, y = generate_data_make_moons()
+    X, y = generate_data_make_blobs()
+    # plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)
+    # plt.title("'Make Moons' dataset")
+    # plt.title("'Make Blobs' dataset")
     # plt.show()
 
     # testing different network depths
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,3,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,3,3,5], act_fun_type='tanh')
+    model = DeepNeuralNetwork(nn_layer_dims=[2,4,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,4,4,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,4,4,4,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,4,4,4,4,4], act_fun_type='tanh')
 
     # testing different nn_layer_dims for deep network
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,3,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,5,5,5,5,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,10,10,10,10,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,20,20,20,20,5], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,5,5,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,10,10,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,20,20,4], act_fun_type='tanh')
 
     # testing different act_fun_types for deep network
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,3,5], act_fun_type='tanh')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,3,5], act_fun_type='sigmoid')
-    # model = DeepNeuralNetwork(nn_layer_dims=[2,3,3,3,3,5], act_fun_type='relu')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,4,4,4], act_fun_type='tanh')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,4,4,4], act_fun_type='sigmoid')
+    # model = DeepNeuralNetwork(nn_layer_dims=[2,4,4,4], act_fun_type='relu')
 
     # fit model
     # model.fit_model(X, y)
