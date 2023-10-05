@@ -1,34 +1,41 @@
 '''
-ELEC 576-HW1-P1
+three_layer_neural_network.py
+ELEC 576 HW 1
 Robert Heeter
 4 October 2023
 '''
 
 import numpy as np
-from sklearn import datasets, linear_model
+from sklearn import datasets
+from sklearn.preprocessing import OneHotEncoder
 import matplotlib.pyplot as plt
 
-def generate_data():
+def generate_data_make_moons():
     '''
-    generate data
+    generate data_make_moons
     param:
     return:
     - X: input data
     - y: given labels
     '''
+
     np.random.seed(0)
-    X, y = datasets.make_moons(200, noise=0.20)
+    X, y = datasets.make_moons(n_samples=200, noise=0.20)
+
     return X, y
 
-def plot_decision_boundary(pred_func, X, y):
+def plot_decision_boundary(pred_func, X, y, act_fun_type, nn_layer_dims):
     '''
     plot the decision boundary
     param:
     - pred_func: function used to predict the label
     - X: input data
     - y: given labels
+    - act_fun_type: 'tanh', 'sigmoid', 'relu'
+    - nn_layer_dims: the number of units in each layer (input + hidden + output)
     return:
     '''
+
     # set min and max values and give it some padding
     x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
     y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
@@ -44,23 +51,25 @@ def plot_decision_boundary(pred_func, X, y):
     # plot the contour and training examples
     plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral)
     plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Spectral)
+    plt.title(f'Make Moons: act_fun_type = [{act_fun_type}], nn_layer_dims = {nn_layer_dims}')
     plt.show()
 
 class NeuralNetwork(object):
     '''
     builds and trains a neural network
     '''
-    def __init__(self, nn_input_dim, nn_hidden_dim , nn_output_dim, act_fun_type='tanh', reg_lambda=0.01, seed=0):
+    def __init__(self, nn_input_dim, nn_hidden_dim, nn_output_dim, act_fun_type='tanh', reg_lambda=0.01, seed=0):
         '''
         param:
         - nn_input_dim: input dimension
         - nn_hidden_dim: the number of hidden units
         - nn_output_dim: output dimension
-        - act_fun_type: type of activation function. 3 options: 'tanh', 'sigmoid', 'relu'
+        - act_fun_type: 'tanh', 'sigmoid', 'relu'
         - reg_lambda: regularization coefficient
         - seed: random seed
         return:
         '''
+
         self.nn_input_dim = nn_input_dim
         self.nn_hidden_dim = nn_hidden_dim
         self.nn_output_dim = nn_output_dim
@@ -79,46 +88,63 @@ class NeuralNetwork(object):
         computes the activation functions
         param:
         - z: net input
-        - type: Tanh, Sigmoid, or ReLU
+        - type: 'tanh', 'sigmoid', 'relu'
         return:
          - activations
         '''
 
-        # YOU IMPLMENT YOUR act_fun HERE
+        if type == 'tanh':
+            return np.tanh(z)
 
-        return None
+        elif type == 'sigmoid':
+            return 1/(1+np.exp(-z))
+
+        elif type == 'relu':
+            return np.maximum(z, 0)
+        
+        else:
+            raise Exception(f'[{type}] is not a valid activation type')
 
     def diff_act_fun(self, z, type):
         '''
         computes the derivatives of the activation functions w.r.t. the net input
         param:
         - z: net input
-        - type: Tanh, Sigmoid, or ReLU
+        - type: tanh, sigmoid, or relu
         return:
         - derivatives of the activation functions w.r.t. the net input
         '''
+        
+        if type == 'tanh':
+            f = np.tanh(z)
+            return 1-np.power(f, 2)
+            
+        elif type == 'sigmoid':
+            f = 1/(1+np.exp(-z))
+            return f*(1-f)
+        
+        elif type == 'relu':
+            f = z
+            f[f > 0] = 1
+            return f
+        
+        else:
+            raise Exception(f'[{type}] is not a valid activation type')
 
-        # YOU IMPLEMENT YOUR diff_act_fun HERE
-
-        return None
-
-    def feedforward(self, X, act_fun):
+    def feedforward(self, X):
         '''
         builds a 3-layer neural network and computes the two probabilities, one for class 0 and one for class 1
         param:
         - X: input data
-        - act_fun: activation function
         return:
         '''
 
-        # YOU IMPLEMENT YOUR feedforward HERE
+        self.z1 = np.dot(X, self.W1) + self.b1
+        self.a1 = self.act_fun(self.z1, type=self.act_fun_type)
+        self.z2 = np.dot(self.a1, self.W2) + self.b2
 
-        # self.z1 =
-        # self.a1 =
-        # self.z2 =
         exp_scores = np.exp(self.z2)
         self.probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
-        return None
 
     def calculate_loss(self, X, y):
         '''
@@ -129,18 +155,19 @@ class NeuralNetwork(object):
         return:
         - loss for prediction
         '''
+
         num_examples = len(X)
-        self.feedforward(X, lambda x: self.act_fun(x, type=self.act_fun_type))
+        self.feedforward(X)
 
-        # calculating the loss
-
-        # YOU IMPLEMENT YOUR CALCULATION OF THE LOSS HERE
-
-        # data_loss =
+        y_one_hot_encoded = OneHotEncoder(sparse_output=False)
+        y_one_hot_encoded = y_one_hot_encoded.fit_transform(y.reshape((-1, 1)))
+        data_loss = - np.sum(np.log(self.probs) * y_one_hot_encoded) / num_examples
 
         # add regulatization term to loss (optional)
         data_loss += self.reg_lambda / 2 * (np.sum(np.square(self.W1)) + np.sum(np.square(self.W2)))
-        return (1. / num_examples) * data_loss
+        # data_loss = (-1. / num_examples) * data_loss
+
+        return data_loss
 
     def predict(self, X):
         '''
@@ -150,30 +177,33 @@ class NeuralNetwork(object):
         return:
         - label inferred
         '''
-        self.feedforward(X, lambda x: self.act_fun(x, type=self.act_fun_type))
+
+        self.feedforward(X)
         return np.argmax(self.probs, axis=1)
 
-    def backprop(self, X, y):
+    def backpropagation(self, X, y):
         '''
         implements backpropagation to compute the gradients used to update the parameters in the backward step
         param:
         - X: input data
         - y: given labels
         return:
-        - dL/dW1
-        - dL/b1-
-        - dL/dW2
-        - dL/db2
+        - dW2: dL/dW2
+        - db2: dL/db2
+        - dW1: dL/dW1
+        - db1: dL/db1
         '''
 
-        # IMPLEMENT YOUR BACKPROP HERE
         num_examples = len(X)
         delta3 = self.probs
         delta3[range(num_examples), y] -= 1
-        # dW2 = dL/dW2
-        # db2 = dL/db2
-        # dW1 = dL/dW1
-        # db1 = dL/db1
+        delta2 = np.dot(delta3, self.W2.T) * (self.diff_act_fun(self.z1, type=self.act_fun_type))
+        
+        dW2 = np.dot(self.a1.T, delta3) # dW2 = dL/dW2
+        db2 = np.sum(delta3, axis=0) # db2 = dL/db2
+        dW1 = np.dot(X.T, delta2) # dW1 = dL/dW1
+        db1 = np.sum(delta2, axis=0) # db1 = dL/db1
+
         return dW1, dW2, db1, db2
 
     def fit_model(self, X, y, epsilon=0.01, num_passes=20000, print_loss=True):
@@ -182,18 +212,20 @@ class NeuralNetwork(object):
         param:
         - X: input data
         - y: given labels
+        - epsilon: learning rate
         - num_passes: the number of times that the algorithm runs through the whole dataset
         - print_loss: print the loss or not
         return:
         '''
+
         # gradient descent
         for i in range(0, num_passes):
 
             # feedforward (forward propoagation)
-            self.feedforward(X, lambda x: self.act_fun(x, type=self.act_fun_type))
+            self.feedforward(X)
 
             # backpropagation
-            dW1, dW2, db1, db2 = self.backprop(X, y)
+            dW1, dW2, db1, db2 = self.backpropagation(X, y)
 
             # add regularization terms (b1 and b2 don't have regularization terms)
             dW2 += self.reg_lambda * self.W2
@@ -217,18 +249,34 @@ class NeuralNetwork(object):
         - y: given labels
         return:
         '''
-        plot_decision_boundary(lambda x: self.predict(x), X, y)
+
+        plot_decision_boundary(lambda x: self.predict(x), X, y, self.act_fun_type, [self.nn_input_dim, self.nn_hidden_dim, self.nn_output_dim])
 
 def main():
     # # generate and visualize Make Moons dataset
-    X, y = generate_data()
-    plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)
-    plt.show()
+    X, y = generate_data_make_moons()
+    # plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)
+    # plt.title("'Make Moons' dataset")
+    # plt.show()
 
-    # create, train, and fit neural network
+    # testing different act_fun_type
+    model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=3, nn_output_dim=2, act_fun_type='tanh')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=3 , nn_output_dim=2, act_fun_type='sigmoid')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=3 , nn_output_dim=2, act_fun_type='relu')
+
+    # testing different nn_hidden_dim
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=1 , nn_output_dim=2, act_fun_type='tanh')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=2 , nn_output_dim=2, act_fun_type='tanh')
     # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=3 , nn_output_dim=2, act_fun_type='tanh')
-    # model.fit_model(X,y)
-    # model.visualize_decision_boundary(X,y)
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=4 , nn_output_dim=2, act_fun_type='tanh')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=5 , nn_output_dim=2, act_fun_type='tanh')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=6 , nn_output_dim=2, act_fun_type='tanh')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=7 , nn_output_dim=2, act_fun_type='tanh')
+    # model = NeuralNetwork(nn_input_dim=2, nn_hidden_dim=8 , nn_output_dim=2, act_fun_type='tanh')   
+
+    # fit model
+    model.fit_model(X, y)
+    model.visualize_decision_boundary(X, y)
 
 if __name__ == "__main__":
     main()
