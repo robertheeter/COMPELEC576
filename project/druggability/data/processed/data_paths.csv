@@ -1,0 +1,11 @@
+,pdb_chain_id,complex_dir,pdb_path,protein_path,labels_path,radius_pocket,expand_pockets_by_res,cut_out_pockets,include_ligand
+0,2XH6_B,data/processed/2XH6_B,data/processed/2XH6_B/dc_2XH6_rcsb.pdb,data/processed/2XH6_B/dc_2XH6_B_protein.pdb,data/processed/2XH6_B/dc_2XH6_B_labels.npy,5,TRUE,FALSE,FALSE
+1,8BRO_A,data/processed/8BRO_A,data/processed/8BRO_A/dc_8BRO_rcsb.pdb,data/processed/8BRO_A/dc_8BRO_A_protein.pdb,data/processed/8BRO_A/dc_8BRO_A_labels.npy,5,TRUE,FALSE,FALSE
+2,2YDX_B,data/processed/2YDX_B,data/processed/2YDX_B/dc_2YDX_rcsb.pdb,data/processed/2YDX_B/dc_2YDX_B_protein.pdb,data/processed/2YDX_B/dc_2YDX_B_labels.npy,5,TRUE,FALSE,FALSE
+3,6C3M_A,data/processed/6C3M_A,data/processed/6C3M_A/dc_6C3M_rcsb.pdb,data/processed/6C3M_A/dc_6C3M_A_protein.pdb,data/processed/6C3M_A/dc_6C3M_A_labels.npy,5,TRUE,FALSE,FALSE
+4,3IUB_A,data/processed/3IUB_A,data/processed/3IUB_A/dc_3IUB_rcsb.pdb,data/processed/3IUB_A/dc_3IUB_A_protein.pdb,data/processed/3IUB_A/dc_3IUB_A_labels.npy,5,TRUE,FALSE,FALSE
+5,3NT1_A,data/processed/3NT1_A,data/processed/3NT1_A/dc_3NT1_rcsb.pdb,data/processed/3NT1_A/dc_3NT1_A_protein.pdb,data/processed/3NT1_A/dc_3NT1_A_labels.npy,5,TRUE,FALSE,FALSE
+6,1UI0_A,data/processed/1UI0_A,data/processed/1UI0_A/dc_1UI0_rcsb.pdb,data/processed/1UI0_A/dc_1UI0_A_protein.pdb,data/processed/1UI0_A/dc_1UI0_A_labels.npy,5,TRUE,FALSE,FALSE
+7,7DUQ_R,data/processed/7DUQ_R,data/processed/7DUQ_R/dc_7DUQ_rcsb.pdb,data/processed/7DUQ_R/dc_7DUQ_R_protein.pdb,data/processed/7DUQ_R/dc_7DUQ_R_labels.npy,5,TRUE,FALSE,FALSE
+8,2P0M_B,data/processed/2P0M_B,data/processed/2P0M_B/dc_2P0M_rcsb.pdb,data/processed/2P0M_B/dc_2P0M_B_protein.pdb,data/processed/2P0M_B/dc_2P0M_B_labels.npy,5,TRUE,FALSE,FALSE
+9,1US0_A,data/processed/1US0_A,data/processed/1US0_A/dc_1US0_rcsb.pdb,data/processed/1US0_A/dc_1US0_A_protein.pdb,data/processed/1US0_A/dc_1US0_A_labels.npy,5,TRUE,FALSE,FALSE

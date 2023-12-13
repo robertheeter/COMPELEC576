@@ -1,0 +1,93 @@
+2023-09-07 09:54:48 - CRITICAL: PREPROCESSING PARAMETERS
+2023-09-07 09:54:48 - INFO: pdb_data_path = dc_data_raw/pdb_data/one_per_cluster.tsv
+2023-09-07 09:54:48 - INFO: lig_data_path = dc_data_raw/lig_data/druglike_ligands.tsv
+2023-09-07 09:54:48 - INFO: het_data_path = NA
+2023-09-07 09:54:48 - INFO: sample_size = 20
+2023-09-07 09:54:48 - INFO: data_dir = dc_data_processed
+2023-09-07 09:54:48 - INFO: radius_pocket = 5
+2023-09-07 09:54:48 - INFO: expand_pockets_by_res = True
+2023-09-07 09:54:48 - INFO: cut_out_pockets = False
+2023-09-07 09:54:48 - INFO: include_ligand = False
+2023-09-07 09:54:48 - INFO: LEN pdb_chain_id_list = 20
+2023-09-07 09:54:48 - INFO: LEN lig_id_list = 20084
+2023-09-07 09:54:48 - INFO: LEN het_id_list = 0 
+2023-09-07 09:54:48 - CRITICAL: PREPROCESSING START
+2023-09-07 09:54:49 - INFO: [5C8Z_B]: atoms around ligand(s) ['ZGR'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:51 - INFO: [4MYD_A]: atoms around ligand(s) ['164'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:52 - INFO: [4DKP_A]: atoms around ligand(s) ['0LL'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:53 - INFO: [5UC1_B]: atoms around ligand(s) ['486'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:55 - INFO: [4FZB_F]: atoms around ligand(s) ['0VJ'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:56 - INFO: [2ZXU_A]: atoms around ligand(s) ['DST'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:57 - INFO: [5C3U_A]: atoms around ligand(s) ['PLP'] labeled [1, DRUGGABLE]
+2023-09-07 09:54:58 - INFO: [3BQZ_A]: atoms around ligand(s) ['MGR'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:00 - INFO: [1KQG_C]: atoms around ligand(s) ['HQO'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:01 - INFO: [6G2G_A]: atoms around ligand(s) ['SF4'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:02 - INFO: [5G6K_A]: atoms around ligand(s) ['M94'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:03 - INFO: [4AKY_C]: atoms around ligand(s) ['4LL'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:04 - INFO: [3WJ1_A]: atoms around ligand(s) ['BOG'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:06 - INFO: [7YPY_L]: atoms around ligand(s) ['CHD'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:08 - INFO: [7W3E_B]: atoms around ligand(s) ['CHD'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:09 - INFO: [3T4L_A]: atoms around ligand(s) ['ZEA'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:11 - INFO: [7T08_B]: atoms around ligand(s) ['3FX', 'XO1'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:12 - INFO: [4NTK_C]: atoms around ligand(s) ['ZSP'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:14 - INFO: [2P1N_E]: atoms around ligand(s) ['CFA'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:15 - INFO: [1JNR_D]: atoms around ligand(s) ['SF4'] labeled [1, DRUGGABLE]
+2023-09-07 09:55:15 - CRITICAL: PREPROCESSING END
+2023-09-07 09:55:15 - INFO: data_path = dc_data_processed/dc_data_paths.csv
+2023-09-07 09:55:15 - INFO: LEN data_df = 20
+2023-12-05 07:55:29 - CRITICAL: PREPROCESSING PARAMETERS
+2023-12-05 07:55:29 - INFO: pro_data_path = data/raw/pdb/one_per_cluster.tsv
+2023-12-05 07:55:29 - INFO: lig_data_path = data/raw/lig/druglike_ligands.tsv
+2023-12-05 07:55:29 - INFO: het_data_path = NA
+2023-12-05 07:55:29 - INFO: sample_size = 20
+2023-12-05 07:55:29 - INFO: data_dir = data/processed
+2023-12-05 07:55:29 - INFO: radius_pocket = 5
+2023-12-05 07:55:29 - INFO: expand_pockets_by_res = True
+2023-12-05 07:55:29 - INFO: cut_out_pockets = False
+2023-12-05 07:55:29 - INFO: include_ligand = False
+2023-12-05 07:55:29 - INFO: LEN pdb_chain_id_list = 0
+2023-12-05 07:55:29 - INFO: LEN lig_id_list = 20084
+2023-12-05 07:55:29 - INFO: LEN het_id_list = 0 
+2023-12-05 07:55:29 - CRITICAL: PREPROCESSING START
+2023-12-05 07:55:29 - CRITICAL: PREPROCESSING END
+2023-12-05 07:55:29 - INFO: data_path = data/processed/data_paths.csv
+2023-12-05 07:55:29 - INFO: LEN data_df = 0
+2023-12-05 07:57:41 - CRITICAL: PREPROCESSING PARAMETERS
+2023-12-05 07:57:41 - INFO: pro_data_path = data/raw/pro/one_per_cluster.tsv
+2023-12-05 07:57:41 - INFO: lig_data_path = data/raw/lig/druglike_ligands.tsv
+2023-12-05 07:57:41 - INFO: het_data_path = NA
+2023-12-05 07:57:41 - INFO: sample_size = 20
+2023-12-05 07:57:41 - INFO: data_dir = data/processed
+2023-12-05 07:57:41 - INFO: radius_pocket = 5
+2023-12-05 07:57:41 - INFO: expand_pockets_by_res = True
+2023-12-05 07:57:41 - INFO: cut_out_pockets = False
+2023-12-05 07:57:41 - INFO: include_ligand = False
+2023-12-05 07:57:41 - INFO: LEN pdb_chain_id_list = 20
+2023-12-05 07:57:41 - INFO: LEN lig_id_list = 20084
+2023-12-05 07:57:41 - INFO: LEN het_id_list = 0 
+2023-12-05 07:57:41 - CRITICAL: PREPROCESSING START
+2023-12-05 07:57:42 - INFO: [4D7D_A]: atoms around ligand(s) ['PKT'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:42 - INFO: [1FAV_C]: atoms around ligand(s) ['4BA'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:43 - INFO: [8A1P_B]: atoms around ligand(s) ['LF0'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:44 - INFO: [4R5M_A]: atoms around ligand(s) ['4NO'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:46 - INFO: [1QZ9_A]: atoms around ligand(s) ['PLP'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:47 - INFO: [6A2W_A]: atoms around ligand(s) ['KC1', 'KC2', 'SOG'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:48 - INFO: [3U9S_I]: atoms around ligand(s) ['BTI'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:49 - INFO: [7B7R_A]: atoms around ligand(s) ['T1K'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:50 - INFO: [5H8Q_B]: atoms around ligand(s) ['5YE'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:52 - INFO: [7XUJ_A]: atoms around ligand(s) ['I2R'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:53 - INFO: [1R55_A]: atoms around ligand(s) ['097'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:54 - INFO: [4NG3_A]: atoms around ligand(s) ['1DF'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:56 - INFO: [3NA0_A]: atoms around ligand(s) ['2DC'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:57 - INFO: [1ZKL_A]: atoms around ligand(s) ['IBM'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:57 - INFO: [1FCA_A]: atoms around ligand(s) ['SF4'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:58 - INFO: [6GHM_A]: atoms around ligand(s) ['NHE'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:59 - INFO: [6FAH_A]: atoms around ligand(s) ['SF4'] labeled [1, DRUGGABLE]
+2023-12-05 07:57:59 - ERROR: [6FAH_A]: RDKit error reading labeled protein or pocket .pdb [data/processed/6FAH_A/6FAH_A_protein.pdb]; see RDKit Logger; error message ['NoneType' object has no attribute 'GetAtoms']
+2023-12-05 07:57:59 - ERROR: [6FAH_A]: error in label_chain_around_ligand; ignoring this .pdb
+2023-12-05 07:58:00 - INFO: [1YSG_A]: atoms around ligand(s) ['4FC'] labeled [1, DRUGGABLE]
+2023-12-05 07:58:02 - INFO: [7XNL_A]: atoms around ligand(s) ['I0S'] labeled [1, DRUGGABLE]
+2023-12-05 07:58:02 - INFO: [3BQZ_A]: atoms around ligand(s) ['MGR'] labeled [1, DRUGGABLE]
+2023-12-05 07:58:02 - CRITICAL: PREPROCESSING END
+2023-12-05 07:58:02 - INFO: data_path = data/processed/data_paths.csv
+2023-12-05 07:58:02 - INFO: LEN data_df = 19
